@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_camellia.mk
+    $(LOCAL_DIR)/voltage_camellia.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_camellia-user \
-    aosp_camellia-userdebug \
-    aosp_camellia-eng
+    voltage_camellia-user \
+    voltage_camellia-userdebug \
+    voltage_camellia-eng
