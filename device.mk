@@ -99,15 +99,9 @@ PRODUCT_PACKAGES += \
 
 # Boot Control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-service
-
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-mtkimpl \
-    android.hardware.boot@1.2-mtkimpl.recovery
-
-PRODUCT_PACKAGES += \
-    libmtk_bsg \
-    libmtk_bsg.recovery
+    android.hardware.boot@1.2-service \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -123,6 +117,11 @@ PRODUCT_PACKAGES += \
 # CAS
 PRODUCT_PACKAGES += \
     android.hardware.cas@1.2-service-lazy
+
+# Cgroup
+PRODUCT_COPY_FILES += \
+    system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
+    $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 # DebugFS
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
@@ -243,9 +242,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcodec2_hidl@1.2.vendor \
     libcodec2_vndk.vendor \
-    libavservices_minijail \
-    libavservices_minijail.vendor \
-    libsfplugin_ccodec_utils.vendor
+    libavservices_minijail_vendor \
+    libsfplugin_ccodec_utils.vendor \
+    libcodec2_soft_common.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -453,7 +452,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service-lazy \
     hostapd \
-    libwifi-hal-mt66xx \
     wpa_supplicant
 
 PRODUCT_PACKAGES += \
@@ -461,9 +459,7 @@ PRODUCT_PACKAGES += \
     android.hardware.tetheroffload.control@1.1.vendor:64
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
 # XiaomiParts
 PRODUCT_PACKAGES += \
