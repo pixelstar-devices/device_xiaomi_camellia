@@ -118,6 +118,7 @@ vendor.display.dataspace_saturation_matrix=1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0
 vendor.display.idle_time=1100
 vendor.display.svi.config=1
 vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
+debug.sf.phase_offset_threshold_for_next_vsync_ns=6100000
 
 # Encryption
 ro.crypto.volume.filenames_mode=aes-256-cts
