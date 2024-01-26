@@ -18,6 +18,11 @@ android_app {
         "org.pixelexperience.settings.resources",
     ],
 
+	optional_uses_libs: [
+		"androidx.window.extensions",
+		"androidx.window.sidecar",
+	], 
+  
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
