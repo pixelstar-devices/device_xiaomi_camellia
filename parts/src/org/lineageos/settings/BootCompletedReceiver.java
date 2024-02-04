@@ -25,6 +25,7 @@ import android.util.Log;
 
 import org.lineageos.settings.refreshrate.RefreshUtils;
 import org.lineageos.settings.thermal.ThermalUtils;
+import org.lineageos.settings.touch.HighTouchPollingService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
@@ -36,5 +37,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
         RefreshUtils.initialize(context);
         ThermalUtils.startService(context);
+        HighTouchPollingService.startService(context);
     }
 }

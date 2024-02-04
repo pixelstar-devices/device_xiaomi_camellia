@@ -89,6 +89,11 @@
         </service>
 
         <service
+            android:name=".touch.HighTouchPollingService"
+            android:permission="HighTouchPollingService">
+        </service>
+
+        <service
             android:name=".RefreshRateTileService"
             android:icon="@drawable/ic_qs_refresh_rate"
             android:label="@string/refresh_rate_tile_title"

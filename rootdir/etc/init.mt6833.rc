@@ -287,6 +287,12 @@ on post-fs-data
     #palm_sensor
     chown system system /sys/class/touch/touch_dev/palm_sensor
 
+    # Touchscreen
+    chown system system /sys/devices/platform/goodix_ts.0/goodix_ts_double_tap
+    chmod 0660 /sys/devices/platform/goodix_ts.0/goodix_ts_double_tap
+    chown system system /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
+    chmod 0660 /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
+
     # set ptmx group to non-root
     chown root radio /dev/ptmx
 
